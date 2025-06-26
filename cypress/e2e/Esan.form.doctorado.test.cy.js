@@ -33,6 +33,20 @@ describe('Solicitud de informacion ESAN doctorado ', () => {
 
   })
 
+   it('Verificar el campo documento sea obligatorio', () => {
+     cy.visit('https://www.esan.edu.pe/doctorado#informacion')
+
+     cy.get('#nombres').type('Juan Perez')
+       cy.get('[name^=grado_academico]').select('80')
+       cy.get('#empresa').type('ESAN')
+       cy.get('[name^=cargo]').select('Jefatura / Coordinación')
+       cy.get('#email').type('jperez@test.com') 
+       cy.get('[name^=pais_nacionalidad]').select('PER')
+       cy.get('[name^=ciudad_residencia]').select('Lima')
+       cy.get('#celular').type('999999999') 
+         cy.get('button').contains('Solicitar').click()
+  })
+
         //   cy.wait(1000)
 
  //cy.get('button').should('have.value', 'SOLICITAR INFORMACIÓN')
